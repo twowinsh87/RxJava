@@ -33,6 +33,51 @@
 - 소비자는 구독 시점과 상관없이 통지된 데이터를 처음부터 전달 받을 수 있음
 - 생산자는 소비자가 구독 할때마다 데이터를 처음부터 새롭게 통지
 
-### Hot Publisher
+#### Hot Publisher
 - 소비자는 구독 시점에 통지된 데이터들만 전달 받을 수 있음
 - 생산자는 소비자의 수와 상관없이 데이터를 한번만 통지
+
+
+### 3.Flowable vs Observable
+- [소스코드 참고](https://github.com/ITVillage-Kevin/rxjava/tree/master/src/main/java/com/itvillage/chapter03/chapter0302)
+
+#### Flowable
+- package org.reactivestreams;
+- 리액티브 streams 인터페이스 구현
+- Subscriber에서 데이터를 처리
+- 데이터 개수를 제어하는 `배압(back pressure) 기능` 이 있음 = 데이터 개수 제어 가능
+- Subscription으로 구독을 해지
+
+#### Observable
+- package io.reactivex;
+- 리액티브 streams 인터페이스 구현하지 않음. Rxjava 에서 제공 
+- Observer 에서 데이터를 처리
+- 데이터 개수를 제어하는 `배압(back pressure) 기능` 이 없음 = 데이터 개수 제어 불가
+- Dispasable로 구독을 해지 
+
+
+#### 배압기능 & RxJava의 배압 전략
+- Flowable에서 데이터를 통지하는 속도 > Subscriber에서 데이터를 처리하는 속도
+    - 균형을 맞추기 위해서 데이터 통지량을 제어하는 기능
+- 왜 통지량을 맞춰야 하는가?
+    - 균형이 맞지 않고, 통지된 데이터가 대기하는 상황이 발생하면 에러가 발생할 수 있음
+    
+- Missing 전략
+    - 배압을 적용하지 않는다
+    - 추후에 onBackpressureXXX() 로 배압 적용을 할 수 있음
+
+- ERROR 전략
+    - 통지된 데이터가 버퍼의 크기를 초과하면 MissingBackpressureException 에러를 뱉음
+
+- BUFFER 전략
+    - DROP_LATEST 전략: 버퍼가 가득 찬 시점에 버퍼 내에서 가장 최근에 들어온 데이터를 DROP
+    - DROP_OLDEST 전략: 버퍼가 가득 찬 시점에 버퍼 내에서 가장 나중에 들어온 데이터를 DROP
+    
+- Drop 전략
+    - 소비자 쪽에서 처리하기 전에 들어온(통지된) 데이터는 모두 drop
+    
+- LATEST 전략
+    - 소비자 쪽에서 처리하기 전에 들어온(통지된) 데이터 중에서 가장 나중에(최신) 데이터를 가져와 처리
+    - 버퍼가 가득차면 이 후에 통지된 데이터는 버퍼 외부에서 대기하고 있고, 가장 최근데 대기하는 데이터 부터 버퍼에 채워진다.
+    - ex) 외부 [8,7,6] buffer [5,4,3,2,1] 이 때, 1~5 통지 데이터 처리 후, 시점에 8이 가장 나중이라면
+        - 7,6 은 버려지고 buffer [10,9,8] 이 담기게 됨 
