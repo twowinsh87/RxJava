@@ -1,4 +1,4 @@
-package io.github.twowinsh87.ch04;
+package io.github.twowinsh87.ch0401;
 
 import io.github.twowinsh87.common.Car;
 import io.github.twowinsh87.common.CarMaker;
@@ -6,7 +6,6 @@ import io.github.twowinsh87.common.CarType;
 
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class InterfaceExample {

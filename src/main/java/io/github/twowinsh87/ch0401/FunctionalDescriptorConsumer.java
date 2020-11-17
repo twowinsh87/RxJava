@@ -1,4 +1,4 @@
-package io.github.twowinsh87.ch04;
+package io.github.twowinsh87.ch0401;
 
 import java.util.Arrays;
 import java.util.List;

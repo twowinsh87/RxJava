@@ -1,4 +1,4 @@
-package io.github.twowinsh87;
+package io.github.twowinsh87.ch03;
 
 import io.reactivex.Single;
 

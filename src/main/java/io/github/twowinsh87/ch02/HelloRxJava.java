@@ -1,4 +1,4 @@
-package io.github.twowinsh87;
+package io.github.twowinsh87.ch02;
 
 import io.reactivex.Observable;
 

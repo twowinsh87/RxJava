@@ -1,4 +1,4 @@
-package io.github.twowinsh87.ch04;
+package io.github.twowinsh87.ch0401;
 
 import io.github.twowinsh87.common.*;
 
