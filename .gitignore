@@ -73,3 +73,6 @@ Temporary Items
 .idea/
 .idea/*.xml
 *.iml
+/ReadMe.md
+/.idea/misc.xml
+/.idea/gradle.xml
