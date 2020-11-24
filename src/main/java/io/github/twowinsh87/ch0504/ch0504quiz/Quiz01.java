@@ -1,4 +1,4 @@
-package io.github.twowinsh87.ch0504quiz;
+package io.github.twowinsh87.ch0504.ch0504quiz;
 
 import io.github.twowinsh87.common.SampleData;
 import io.github.twowinsh87.utils.LogType;

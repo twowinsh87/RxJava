@@ -1,4 +1,4 @@
-package io.github.twowinsh87.ch0402quiz;
+package io.github.twowinsh87.ch0402.ch0402quiz;
 
 import io.github.twowinsh87.common.Car;
 import io.github.twowinsh87.common.CarType;

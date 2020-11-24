@@ -1,4 +1,4 @@
-package io.github.twowinsh87.ch0503quiz;
+package io.github.twowinsh87.ch0503.ch0503quiz;
 
 import io.github.twowinsh87.utils.LogType;
 import io.github.twowinsh87.utils.Logger;

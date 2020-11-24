@@ -1,4 +1,4 @@
-package io.github.twowinsh87.ch0502quiz;
+package io.github.twowinsh87.ch0502.ch0502quiz;
 
 import io.github.twowinsh87.common.CarMaker;
 import io.github.twowinsh87.common.SampleData;
